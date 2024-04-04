@@ -6,6 +6,7 @@
 // 1/30/2024
 // jacobfishel@csu.fullerton.edu
 // jacobfishel
+#include "leftover_record.h"
 
 class LeftoverReport {
     // ======================= YOUR CODE HERE =======================
@@ -17,6 +18,12 @@ class LeftoverReport {
      // Pass objects by const reference when appropriate.
      // Remember that std::string is an object!
      // ===============================================================
+  public:
+  LeftoverReport(const LeftoverRecord& records) : records_(records) {}
+
+  private:
+  LeftoverRecord records_;
+
 };
 
 #endif
