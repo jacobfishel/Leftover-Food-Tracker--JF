@@ -1,12 +1,11 @@
 #ifndef LEFTOVER_TRACKER_H_
 #define LEFTOVER_TRACKER_H_
 
-// Please fill in below.
-// <Your name>
-// <Your section number> (e.g. CPSC 121L-01)
-// <Date>
-// <Your csu.fullerton.edu email>
-// <Your GitHub username>
+// Jacob Fishel
+// CPSC 121L-11
+// 1/30/2024
+// jacobfishel@csu.fullerton.edu
+// jacobfishel
 
 
 class LeftoverTracker {
