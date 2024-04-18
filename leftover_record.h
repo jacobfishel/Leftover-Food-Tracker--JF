@@ -22,8 +22,8 @@ class LeftoverRecord {
   public:
   LeftoverRecord() = default;
   LeftoverRecord(std::string date, std::string meal, std::string food_name,
-  double quantity, std::string leftover_reason, std::string disposal_mechanism,
-  double cost) : date_(date), meal_(meal), food_name_(food_name), quantity_(quantity),
+  double qty_in_oz, std::string leftover_reason, std::string disposal_mechanism,
+  double cost) : date_(date), meal_(meal), food_name_(food_name), qty_in_oz_(qty_in_oz),
                  leftover_reason_(leftover_reason), disposal_mechanism_(disposal_mechanism),
                  cost_(cost) {}
 
@@ -32,7 +32,7 @@ class LeftoverRecord {
   const std::string& GetFoodName()const { return food_name_; }
   const std::string& GetLeftOverReason()const { return leftover_reason_; }
   const std::string& GetDisposalMechanism()const { return disposal_mechanism_; }
-  double GetQuantity()const { return quantity_; }
+  double GetQuantityInOz()const { return qty_in_oz_; }
   double GetCost()const { return cost_; }
   
   void SetDate(const std::string& date) { date_ = date; }
@@ -40,14 +40,14 @@ class LeftoverRecord {
   void SetFoodName(const std::string& food_name) { food_name_ = food_name; }
   void SetLeftOverReason(const std::string& leftover_reason) { leftover_reason_ = leftover_reason; }
   void SetDisposalMechanism(const std::string& disposal_mechanism) { disposal_mechanism_ = disposal_mechanism; }
-  void SetQuantity(double quantity) { quantity_ = quantity; }
+  void SetQuantityInOz(double qty_in_oz) { qty_in_oz = qty_in_oz; }
   void SetCost(double cost) {cost_ = cost; }
 
   private:
   std::string date_;
   std::string meal_;
   std::string food_name_;
-  double quantity_;
+  double qty_in_oz_;
   std::string leftover_reason_;
   std::string disposal_mechanism_;
   double cost_;
