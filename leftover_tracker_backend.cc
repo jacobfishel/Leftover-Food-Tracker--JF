@@ -22,6 +22,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 1. Use the accessor/getter function for date from the
   // LeftoverRecord class object to get the date and store it in the date
   // string declared above.
+  date = record.GetDate();
   writer->String(date.c_str());
 
   writer->String("meal_"); // DO NOT MODIFY
@@ -30,19 +31,20 @@ void SerializeLeftoverRecordToJSON(
   // LeftoverRecord class object to get the meal and store it in the meal
   // string declared above.
   writer->String(meal.c_str());
-
+  meal = record.GetMeal();
   writer->String("food_name_"); // DO NOT MODIFY
   std::string food_name;
   // TODO 3. Use the accessor/getter function for food name from the
   // LeftoverRecord class object to get the food name and store it in the
   // food_name string declared above.
   writer->String(food_name.c_str());
-
+  food_name = record.GetFoodName();
   writer->String("qty_in_oz_"); // DO NOT MODIFY
   double quantity;
   // TODO 4. Use the accessor/getter function for quantity from the
   // LeftoverRecord class object to get the quantity and store it in the
   // quantity variable declared above.
+  quantity = record.GetQuantityInOz();
   writer->Double(quantity);
 
   writer->String("leftover_reason_");// DO NOT MODIFY
@@ -50,6 +52,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 5. Use the accessor/getter function for leftover reason from the
   // LeftoverRecord class object to get the leftover reason and store it in
   // the leftover_reason string declared above.
+  leftover_reason = record.GetLeftOverReason();
   writer->String(leftover_reason.c_str());
 
   writer->String("disposal_mechanism_"); // DO NOT MODIFY
@@ -57,6 +60,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 6. Use the accessor/getter function for disposal mechanism from the
   // LeftoverRecord class object to get the disposal mechanism and store it
   // in the disposal_mechanism string declared above.
+  disposal_mechanism = record.GetDisposalMechanism;
   writer->String(disposal_mechanism.c_str());
 
   writer->String("cost_"); // DO NOT MODIFY
@@ -64,6 +68,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 7. Use the accessor/getter function for cost from the
   // LeftoverRecord class object to get the cost and store it in the cost
   // variable declared above.
+  cost = record.GetCost;
   writer->Double(cost);
 
 
