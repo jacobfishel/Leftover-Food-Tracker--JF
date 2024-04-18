@@ -25,10 +25,10 @@ class LeftoverReport {
 
   std::vector<std::string> MostCommonLeftover(const std::vector<LeftoverRecord>& records) const ;
   std::vector<std::string> MostCostlyLeftoverProducingMeals(const std::vector<LeftoverRecord>& records) const ;
-  double TotalCostOfLeftover() const ;
-  std::vector<std::string> MostCommonLeftoverReasons() const ;
-  std::vector<std::string> MostCommonDisposalMechanisms() const;
-  std::vector<std::string> SuggestLeftoverReductionStrategies() const;
+  double TotalCostOfLeftover(const std::vector<LeftoverRecord>& records) const;
+  std::vector<std::string> MostCommonLeftoverReasons(const std::vector<LeftoverRecord>& records) const;
+  std::vector<std::string> MostCommonDisposalMechanisms(const std::vector<LeftoverRecord>& records) const;
+  std::vector<std::string> SuggestLeftoverReductionStrategies(const std::vector<LeftoverRecord>& records) const;
 
   
   private:
