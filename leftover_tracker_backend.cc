@@ -183,36 +183,35 @@ crow::json::wvalue LeftoverRecordToCrowJSON(const LeftoverRecord &record) {
 crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   crow::json::wvalue report_json({});
 
-  std::vector<std::string> most_common_disposal_mechanisms{} = report.MostCommonDisposalMechanisms();
+  std::vector<std::string> most_common_disposal_mechanisms{report.MostCommonDisposalMechanisms()};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common disposal mechanisms as a vector of strings. Store the
   // result in the vector declared above.
 
-// std::vector<std::string> MostCommonDisposalMechanisms(const std::vector<LeftoverRecord>& records) const;
 
 
   report_json["most_common_disposal_mechanism_"] =
     most_common_disposal_mechanisms;
 
-  std::vector<std::string> most_common_leftovers{};
+  std::vector<std::string> most_common_leftovers{report.MostCommonLeftover()};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common leftovers as a vector of strings. Store the result in
   // the vector declared above.
   report_json["most_common_leftover_"] = most_common_leftovers;
 
-  std::vector<std::string> most_common_leftover_reasons{};
+  std::vector<std::string> most_common_leftover_reasons{report.MostCommonLeftoverReasons()};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most commonwastage reasons as a vector of strings. Store the result in
   // the vector declared above.
   report_json["most_common_leftover_reason_"] = most_common_leftover_reasons;
 
-  std::vector<std::string> most_costly_leftover_producing_meals{};
+  std::vector<std::string> most_costly_leftover_producing_meals{report.MostCostlyLeftoverProducingMeals()};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most costly waste producing meals as a vector of strings. Store the
   // result in the vector declared above.
   report_json["most_leftover_producing_meal_"] = most_costly_leftover_producing_meals;
 
-  std::vector<std::string> suggested_strategies_to_reduce_leftover{};
+  std::vector<std::string> suggested_strategies_to_reduce_leftover{report.SuggestLeftoverReductionStrategies()};
   // TODO: Call the member function of LeftoverReport class that returns all
   // the suggested strategies as a vector of strings. Store the result in the
   // vector declared above.
@@ -223,7 +222,7 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns the
   // total cost of leftovers as a double. Store the result in the double declared.
   report_json["total_cost_of_leftover_"] = total_cost_of_leftover;
-
+  total_cost_of_leftover = report.TotalCostOfLeftover();
   return report_json;
 }
 
@@ -380,11 +379,10 @@ const std::vector<LeftoverRecord>& records{leftover_tracker_object_.GetRecords()
 }
 
 crow::json::wvalue LeftoverTrackerBackend::GetLeftoverReport() const {
-  LeftoverReport generated_report;
+  LeftoverReport generated_report(leftover_tracker_object_.GetLeftoverReport());
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that generates a
   // LeftoverReport object using all the LeftoverRecords and returns it.
   // Store the returned value in the `generated_report` object declared above.
-  
   return LeftoverReportToCrowJSON(generated_report);
 }
