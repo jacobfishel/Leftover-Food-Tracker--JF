@@ -332,6 +332,8 @@ crow::json::wvalue LeftoverTrackerBackend::AddRecord(
   // member object that you added in leftover_tracker.h, that adds a
   // `record` and returns the status of the add operation as a bool. Store the
   // returned value in the bool declared above.
+  add_result =   leftover_tracker_object.AddRecord(record);
+
   status["success"] = add_result;
     
   return status;
@@ -354,7 +356,7 @@ crow::json::wvalue LeftoverTrackerBackend::DeleteRecord(
 
 crow::json::wvalue LeftoverTrackerBackend::GetRecords() const {
 
-  std::vector<LeftoverRecord> records;
+  const std::vector<LeftoverRecord>& records{leftover_tracker_object.GetRecords()};
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that returns all
   // the LeftoverRecord objects. Store the returned records in the vector
