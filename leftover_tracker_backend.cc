@@ -60,7 +60,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 6. Use the accessor/getter function for disposal mechanism from the
   // LeftoverRecord class object to get the disposal mechanism and store it
   // in the disposal_mechanism string declared above.
-  disposal_mechanism = record.GetDisposalMechanism;
+  disposal_mechanism = record.GetDisposalMechanism();
   writer->String(disposal_mechanism.c_str());
 
   writer->String("cost_"); // DO NOT MODIFY
@@ -68,7 +68,7 @@ void SerializeLeftoverRecordToJSON(
   // TODO 7. Use the accessor/getter function for cost from the
   // LeftoverRecord class object to get the cost and store it in the cost
   // variable declared above.
-  cost = record.GetCost;
+  cost = record.GetCost();
   writer->Double(cost);
 
 
@@ -231,31 +231,31 @@ LeftoverRecord QueryStringToLeftoverRecord(
   // TODO 1. Get the date from the query_string using query_string.get("date"),
   // and set it in the `record` object using the setter in LeftoverRecord
   // class.
-
+  record.SetDate(query_string.get("date"));
   // TODO 2. Get the meal from the query_string using query_string.get("meal"),
   // and set it in the `record` object using the setter in LeftoverRecord
   // class.
-
+  record.SetMeal(query_string.get("meal"));
   // TODO 3. Get the food name from the query_string using
   // query_string.get("food_name"), and set it in the `record` object using the
   // setter in LeftoverRecord class.
-
+  record.SetFoodName(query_string.get("food_name"));
   // TODO 4. Get the quantity from the query_string using
   // std::stod(query_string.get("qty_in_oz")), and set it in the `record` object
   // using the setter in LeftoverRecord class.
-
+  record.SetQuantityInOz(std::stod(query_string.get("qty_in_oz")));
   // TODO 5. Get the leftover reason from the query_string using
   // query_string.get("leftover_reason"), and set it in the `record` object using
   // the setter in LeftoverRecord class.
-
+  record.SetLeftOverReason(query_string.get("leftover_reason"));
   // TODO 6. Get the disposal mechanism from the query_string using
   // query_string.get("disposal_mechanism"), and set it in the `record` object
   // using the setter in LeftoverRecord class.
-
+  record.SetDisposalMechanism(query_string.get("disposal_mechanism"));
   // TODO 7. Get the cost from the query_string using
   // std::stod(query_string.get("cost")), and set it in the `record` object
   // using the setter in LeftoverRecord class.
-    
+  record.SetCost(std::stod(query_string.get("cost")));
   return record;
 }
 

@@ -7,6 +7,8 @@
 // jacobfishel@csu.fullerton.edu
 // jacobfishel
 
+#include "leftover_record.h"
+#include "leftover_report.h"
 
 class LeftoverTracker {
     // ======================= YOUR CODE HERE =======================
@@ -18,6 +20,17 @@ class LeftoverTracker {
       // Pass objects by const reference when appropriate.
       // Remember that std::string is an object!
       // ===============================================================
+  public:
+
+  bool AddRecord(const LeftoverRecord& record);
+  const std::vector<LeftoverRecord>& GetRecords() const { return leftover_records_; };
+  LeftoverReport GetLeftoverReport() const {
+    LeftoverReport report(leftover_records_);
+    return report;
+  };
+
+  private:
+  std::vector<LeftoverRecord> leftover_records_;
 };
 
 #endif
