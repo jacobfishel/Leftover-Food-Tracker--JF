@@ -21,7 +21,7 @@ class LeftoverReport {
      // Remember that std::string is an object!
      // ===============================================================
   public:
-   LeftoverReport(const std::vector<LeftoverRecord> &leftover_records);
+  LeftoverReport(const std::vector<LeftoverRecord> &leftover_records) : leftover_records_(leftover_records) {};
 
   std::vector<std::string> MostCommonLeftover() const ;
   std::vector<std::string> MostCostlyLeftoverProducingMeals() const ;
