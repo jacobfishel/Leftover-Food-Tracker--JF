@@ -379,7 +379,7 @@ const std::vector<LeftoverRecord>& records = leftover_tracker_object_.GetRecords
 }
 
 crow::json::wvalue LeftoverTrackerBackend::GetLeftoverReport() const {
-  LeftoverReport generated_report(leftover_tracker_object_.GetLeftoverReport());
+  LeftoverReport generated_report = leftover_tracker_object_.GetLeftoverReport();
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that generates a
   // LeftoverReport object using all the LeftoverRecords and returns it.

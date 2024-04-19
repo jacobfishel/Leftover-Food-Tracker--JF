@@ -20,12 +20,12 @@ class LeftoverRecord {
     // Remember that std::string is an object!
     // ===============================================================
   public:
-  // LeftoverRecord() = default;
-  // LeftoverRecord(std::string date, std::string meal, std::string food_name,
-  // double qty_in_oz, std::string leftover_reason, std::string disposal_mechanism,
-  // double cost) : date_(date), meal_(meal), food_name_(food_name), qty_in_oz_(qty_in_oz),
-  //                leftover_reason_(leftover_reason), disposal_mechanism_(disposal_mechanism),
-  //                cost_(cost) {}
+  LeftoverRecord() = default;
+  LeftoverRecord(std::string date, std::string meal, std::string food_name,
+  double qty_in_oz, std::string leftover_reason, std::string disposal_mechanism,
+  double cost) : date_(date), meal_(meal), food_name_(food_name), qty_in_oz_(qty_in_oz),
+                 leftover_reason_(leftover_reason), disposal_mechanism_(disposal_mechanism),
+                 cost_(cost) {}
 
   const std::string& GetDate()const { return date_; }
   const std::string& GetMeal()const { return meal_; }
