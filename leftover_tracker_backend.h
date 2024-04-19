@@ -52,6 +52,6 @@ class LeftoverTrackerBackend {
   // A top level class object to leftovers.
   // TODO: Add a LeftoverTracker object as a member variable here. Make sure you stick
   // to Google's style guide when naming your variable.
-  LeftoverTracker leftover_tracker_object{};
+  LeftoverTracker leftover_tracker_object_{};
 };
 #endif

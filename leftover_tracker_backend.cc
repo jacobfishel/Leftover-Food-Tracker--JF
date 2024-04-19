@@ -1,4 +1,5 @@
 #include "leftover_tracker_backend.h"
+#include "leftover_tracker.h"
 
 #include <filesystem>
 
@@ -182,10 +183,14 @@ crow::json::wvalue LeftoverRecordToCrowJSON(const LeftoverRecord &record) {
 crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   crow::json::wvalue report_json({});
 
-  std::vector<std::string> most_common_disposal_mechanisms{};
+  std::vector<std::string> most_common_disposal_mechanisms{} = report.MostCommonDisposalMechanisms();
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common disposal mechanisms as a vector of strings. Store the
   // result in the vector declared above.
+
+// std::vector<std::string> MostCommonDisposalMechanisms(const std::vector<LeftoverRecord>& records) const;
+
+
   report_json["most_common_disposal_mechanism_"] =
     most_common_disposal_mechanisms;
 
@@ -332,7 +337,7 @@ crow::json::wvalue LeftoverTrackerBackend::AddRecord(
   // member object that you added in leftover_tracker.h, that adds a
   // `record` and returns the status of the add operation as a bool. Store the
   // returned value in the bool declared above.
-  add_result =   leftover_tracker_object.AddRecord(record);
+  add_result =   leftover_tracker_object_.AddRecord(record);
 
   status["success"] = add_result;
     
@@ -356,14 +361,13 @@ crow::json::wvalue LeftoverTrackerBackend::DeleteRecord(
 
 crow::json::wvalue LeftoverTrackerBackend::GetRecords() const {
 
-  const std::vector<LeftoverRecord>& records{leftover_tracker_object.GetRecords()};
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that returns all
   // the LeftoverRecord objects. Store the returned records in the vector
   // declared above. Also change the data type of the records vector to `const
   // std::vector<LeftoverRecord>&`.
-    
-    
+const std::vector<LeftoverRecord>& records{leftover_tracker_object_.GetRecords()};
+
   crow::json::wvalue records_json({});
   records_json["num_records"] = records.size();
 
