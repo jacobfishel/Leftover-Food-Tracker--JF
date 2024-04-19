@@ -31,15 +31,15 @@ void SerializeLeftoverRecordToJSON(
   // TODO 2. Use the accessor/getter function for meal from the
   // LeftoverRecord class object to get the meal and store it in the meal
   // string declared above.
-  writer->String(meal.c_str());
   meal = record.GetMeal();
+  writer->String(meal.c_str());
   writer->String("food_name_"); // DO NOT MODIFY
   std::string food_name;
   // TODO 3. Use the accessor/getter function for food name from the
   // LeftoverRecord class object to get the food name and store it in the
   // food_name string declared above.
-  writer->String(food_name.c_str());
   food_name = record.GetFoodName();
+  writer->String(food_name.c_str());
   writer->String("qty_in_oz_"); // DO NOT MODIFY
   double quantity;
   // TODO 4. Use the accessor/getter function for quantity from the
@@ -189,7 +189,6 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // result in the vector declared above.
 
 
-
   report_json["most_common_disposal_mechanism_"] =
     most_common_disposal_mechanisms;
 
@@ -307,13 +306,13 @@ bool LeftoverTrackerBackend::WriteRecordsToJSONFile() const {
   rapidjson::Writer<rapidjson::StringBuffer> writer(ss);
   writer.StartArray();
 
-  std::vector<LeftoverRecord> records;
+  const std::vector<LeftoverRecord>& records = leftover_tracker_object_.GetRecords();
   // TODO: Call the member function in the LeftoverTracker class, on the
   // member object that you added in leftover_tracker.h, that returns all
   // the LeftoverRecord objects. Store the returned records in the vector
   // declared above. Also change the data type of the records vector to `const
   // std::vector<LettoverRecord>&`.
-    
+  
   for (LeftoverRecord record : records) {
     SerializeLeftoverRecordToJSON(record, &writer);
   }
