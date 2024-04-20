@@ -25,7 +25,7 @@ class LeftoverTracker {
   bool AddRecord(const LeftoverRecord& record);
   const std::vector<LeftoverRecord>& GetRecords() const { return leftover_records_; };
   LeftoverReport GetLeftoverReport() const {
-  return LeftoverReport(leftover_records_);
+    return LeftoverReport(leftover_records_);
   };
 
   private:

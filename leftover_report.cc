@@ -19,6 +19,10 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
+LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord>& leftover_records)
+    : leftover_records_(leftover_records), total_cost_of_leftovers_(0) {}
+
+
 std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
     std::map<std::string, int> common_names;
     for(const LeftoverRecord& record : leftover_records_) {
@@ -68,8 +72,8 @@ std::vector<std::string> LeftoverReport::MostCostlyLeftoverProducingMeals() cons
     return most_costly_meals;
 }
 
-double LeftoverReport::TotalCostOfLeftover() const {
-    double total_cost = 0;
+double LeftoverReport::TotalCostOfLeftover() const{
+    double total_cost = 0.0;
     for(const LeftoverRecord& record : leftover_records_) {
         total_cost += record.GetCost();
     }
@@ -130,13 +134,16 @@ std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() co
     for (const LeftoverRecord &record : leftover_records_) {
         if (record.GetLeftOverReason() == "Expired") {
             suggested_strategies.push_back("Donate before expiration");
+            break;
         } else if (record.GetLeftOverReason() == "Tastes bad") {
             suggested_strategies.push_back("Buy less food");
-            suggested_strategies.push_back("Recycle leftovers");
+            suggested_strategies.push_back("Recycle left overs");
+            break;
         } else if (record.GetLeftOverReason() == "Too much left overs") {
             suggested_strategies.push_back("Buy less food");
             suggested_strategies.push_back("Cook small servings");
-            suggested_strategies.push_back("Recycle leftovers");
+            suggested_strategies.push_back("Recycle left overs");
+            break;
         }
     }
     return suggested_strategies;

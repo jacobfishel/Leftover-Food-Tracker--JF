@@ -218,11 +218,10 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   report_json["suggested_strategies_to_reduce_leftover_"] =
     suggested_strategies_to_reduce_leftover;
 
-  double total_cost_of_leftover = -9999.0;
+  double total_cost_of_leftover = report.TotalCostOfLeftover();
   // TODO: Call the member function of LeftoverReport class that returns the
   // total cost of leftovers as a double. Store the result in the double declared.
   report_json["total_cost_of_leftover_"] = total_cost_of_leftover;
-  total_cost_of_leftover = report.TotalCostOfLeftover();
   return report_json;
 }
 
