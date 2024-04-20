@@ -85,46 +85,47 @@ LeftoverRecord DeserializeLeftoverRecordFromJSON(const rapidjson::Value &json_ob
      *  object as follows: `json_obj["date_"].GetString()`.
      *  Use that as a function  argument for the mutator that you'll call.
      */
-
+    record.SetDate(json_obj["date_"].GetString());
     /* TODO 2. Use the mutator/setter function for meal from the LeftoverRecord
      *  class to set the meal in `record` object. You can get the meal from JSON
      *  object as follows: `json_obj["meal_"].GetString()`.
      *  Use that as a function  argument for the mutator that you'll call.
      */
-
+    record.SetMeal(json_obj["meal_"].GetString());
     /* TODO 3. Use the mutator/setter function for food name from the
      * LeftoverRecord class to set the food name in `record` object. You can
      * get the food name from the JSON object as follows:
      * `json_obj["food_name_"].GetString()`. Use that as a function  argument for
      * the mutator that you'll call.
      */
-
+    record.SetFoodName(json_obj["food_name_"].GetString());
     /* TODO 4. Use the mutator/setter function for quantity from the
      * LeftoverRecord class to set the quantity in `record` object. You can get
      * the quantity from the JSON object as follows:
      * `json_obj["qty_in_oz_"].GetDouble()`. Use that as an function  argument for
      * the mutator that you'll call.
      */
-
+    record.SetQuantityInOz(json_obj["qty_in_oz_"].GetDouble());
     /* TODO 5. Use the mutator/setter function for leftover reason from the
      * LeftoverRecord class to set the leftover reason in `record` object. You
      * can get the leftover reason from the JSON object as follows:
      * `json_obj["leftover_reason_"].GetString()`. Use that as a function argument
      * for the mutator that you'll call.
      */
-
+    record.SetLeftOverReason(json_obj["leftover_reason_"].GetString());
     /* TODO 6. Use the mutator/setter function for disposal mechanism from the
      * LeftoverRecord class to set the disposal mechanism in `record` object.
      * You can get the disposal mechanism from the JSON object as follows:
      * `json_obj["disposal_mechanism_"].GetString()`. Use that as an function
      * argument for the mutator that you'll call.
      */
-
+    record.SetDisposalMechanism(json_obj["disposal_mechanism_"].GetString());
     /* TODO 7. Use the mutator/setter function for cost from the LeftoverRecord
      *  class to set the cost in `record` object. You can get the cost from the JSON
      *  object as follows: `json_obj["cost_"].GetDouble()`.
      *  Use that as an function  argument for the mutator that you'll call.
      */
+     record.SetCost(json_obj["cost_"].GetDouble());
   return record;
 }
 
@@ -292,6 +293,7 @@ bool LeftoverTrackerBackend::LoadRecordsFromJSONFile() {
        ++itr) {
       LeftoverRecord record = DeserializeLeftoverRecordFromJSON(*itr);
       // TODO: Call the member function in the LeftoverTracker class to add a `record`
+      leftover_tracker_object_.AddRecord(record);
   }
 
   records_file.close();
