@@ -21,14 +21,15 @@ class LeftoverReport {
      // Remember that std::string is an object!
      // ===============================================================
   public:
-  LeftoverReport(const std::vector<LeftoverRecord> &leftover_records);
+  LeftoverReport(const std::vector<LeftoverRecord> &leftover_records)
+  : leftover_records_(leftover_records), total_cost_of_leftovers_(0.0){}
 
-  std::vector<std::string> MostCommonLeftover() const;
-  std::vector<std::string> MostCostlyLeftoverProducingMeals() const;
-  double TotalCostOfLeftover() const;
-  std::vector<std::string> MostCommonLeftoverReasons() const;
-  std::vector<std::string> MostCommonDisposalMechanisms() const;
-  std::vector<std::string> SuggestLeftoverReductionStrategies() const;
+  std::vector<std::string> MostCommonLeftover()const;
+  std::vector<std::string> MostCostlyLeftoverProducingMeals()const;
+  double TotalCostOfLeftover()const;
+  std::vector<std::string> MostCommonLeftoverReasons()const;
+  std::vector<std::string> MostCommonDisposalMechanisms()const;
+  std::vector<std::string> SuggestLeftoverReductionStrategies()const;
 
 
   private:
@@ -39,7 +40,5 @@ class LeftoverReport {
   std::vector<std::string> most_common_leftover_reasons_;
   std::vector<std::string> most_common_disposal_mechanisms_;
   std::vector<std::string> suggested_strategies_to_reduce_leftovers_;
-
 };
-
 #endif

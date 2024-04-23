@@ -1,15 +1,15 @@
-// Jacob Fishel
-// CPSC 121L-11
-// 1/30/2024
-// jacobfishel@csu.fullerton.edu
-// jacobfishel
+// // Jacob Fishel
+// // CPSC 121L-11
+// // 1/30/2024
+// // jacobfishel@csu.fullerton.edu
+// // jacobfishel
 
 #include "leftover_report.h"
 #include <map>
 #include <vector>
-// ========================= YOUR CODE HERE =========================
-// This implementation file is where you should implement
-// the member functions declared in the header (leftover_report.h), only
+// // ========================= YOUR CODE HERE =========================
+// // This implementation file is where you should implement
+// // the member functions declared in the header (leftover_report.h), only
 // if you didn't implement them inline within leftover_report.h.
 //
 // Remember to specify the name of the class with :: in this format:
@@ -19,10 +19,6 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
-LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord>& leftover_records)
-    : leftover_records_(leftover_records), total_cost_of_leftovers_(0) {}
-
-
 std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
     std::map<std::string, int> common_names;
     for(const LeftoverRecord& record : leftover_records_) {
@@ -148,10 +144,3 @@ std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() co
     }
     return suggested_strategies;
 }
-
-
-
-
-
-
-  

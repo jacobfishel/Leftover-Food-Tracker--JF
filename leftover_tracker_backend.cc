@@ -299,6 +299,7 @@ bool LeftoverTrackerBackend::LoadRecordsFromJSONFile() {
   return true;
 }
 
+
 bool LeftoverTrackerBackend::WriteRecordsToJSONFile() const {
   std::ofstream records_file{leftover_records_filepath_};
   // Get the records from leftover_tracker_, convert to JSON and

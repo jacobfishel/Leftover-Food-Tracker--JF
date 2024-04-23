@@ -51,7 +51,6 @@ class LeftoverRecord {
   std::string leftover_reason_;
   std::string disposal_mechanism_;
   double cost_;
-
 };
 
 #endif
