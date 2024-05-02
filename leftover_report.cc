@@ -19,29 +19,81 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
-std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
-    std::map<std::string, int> common_names;
-    for(const LeftoverRecord& record : leftover_records_) {
-        std::string name = record.GetFoodName();
-        common_names[name]++;
-    }
+// std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
+//     std::map<std::string, int> common_names;
+//     for(const LeftoverRecord& record : leftover_records_) {
+//         std::string name = record.GetFoodName();
+//         common_names[name]++;
+//     }
     
-    double max = 0;
-    for (const auto &pair : common_names) {
-        if (pair.second > max) {
-            max = pair.second;
-        }
-    }
+//     double max = 0;
+//     for (const auto &pair : common_names) {
+//         if (pair.second > max) {
+//             max = pair.second;
+//         }
+//     }
 
-    std::vector<std::string> most_common_item;
-    for(const auto &pair : common_names) {
-        if(pair.second == max) {
-            most_common_item.push_back(pair.first);
+//     std::vector<std::string> most_common_item;
+//     for(const auto &pair : common_names) {
+//         if(pair.second == max) {
+//             most_common_item.push_back(pair.first);
+//         }
+//     }
+    
+//     return most_common_item;
+// }
+
+// std::vector<std::string> LeftoverReport::MostCommonLeftover() const{
+// std::map<std::string, int> leftover_count;
+// for (auto records : leftover_records_) {
+//     std::string food_name = records.GetFoodName();
+//     leftover_count[food_name]++;
+// }
+// int max = 0;
+// for (auto loop : leftover_count) {
+//     if (loop.second >= max) {
+//         max = loop.second;
+//     }
+// }
+// std::vector<std::string> most_common_items;
+// for(auto loop : leftover_count) {
+//     if (loop.second == max) {
+// most_common_items.push_back(loop.first);
+//     }
+// }
+// return most_common_items;
+
+
+// };
+
+std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
+    std::map<std::string, int> maps_common_leftover;
+    int max = 0;
+    for(const LeftoverRecord records : leftover_records_) {
+        std::string common_leftover = records.GetFoodName();
+        if(maps_common_leftover.count(common_leftover) == 0){
+            maps_common_leftover.insert({common_leftover, 1});
+            if(max < 1) {
+                max = 1;
+            }
+        }else {
+            maps_common_leftover[common_leftover]++;
+            if (maps_common_leftover[common_leftover] > max) {
+                max = maps_common_leftover[common_leftover];
+            }
         }
     }
-    
-    return most_common_item;
+    std::vector<std::string> max_food;
+    for(auto& it : maps_common_leftover) {
+        if (it.second == max) {
+            max_food.push_back(it.first);
+        }
+    }
+return max_food;
 }
+
+
+
 
 std::vector<std::string> LeftoverReport::MostCostlyLeftoverProducingMeals() const {
     std::map<std::string, double> food_and_cost;
@@ -133,13 +185,18 @@ std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() co
             break;
         } else if (record.GetLeftOverReason() == "Tastes bad") {
             suggested_strategies.push_back("Buy less food");
-            suggested_strategies.push_back("Recycle left overs");
             break;
         } else if (record.GetLeftOverReason() == "Too much left overs") {
             suggested_strategies.push_back("Buy less food");
             suggested_strategies.push_back("Cook small servings");
-            suggested_strategies.push_back("Recycle left overs");
             break;
+        }
+    }
+    for(int i = 0; i < suggested_strategies.size(); i++) {
+        if(suggested_strategies.at(i) == "Expired") {
+            break;
+        } else {
+        suggested_strategies.push_back("Recycle left overs");
         }
     }
     return suggested_strategies;

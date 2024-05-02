@@ -18,18 +18,35 @@
 // to tell the compiler that each function belongs to the LeftoverTracker
 // class.
 // ===================================================================
+// bool LeftoverTracker::AddRecord(const LeftoverRecord& record) { 
+//     for(LeftoverRecord x : leftover_records_) {
+//       if (x.GetCost() == record.GetCost() &&
+//           x.GetDate() == record.GetDate() &&
+//           x.GetDisposalMechanism() == record.GetDisposalMechanism() &&
+//           x.GetFoodName() == record.GetFoodName() &&
+//           x.GetLeftOverReason() == record.GetLeftOverReason() &&
+//           x.GetQuantityInOz() == record.GetQuantityInOz() &&
+//           x.GetMeal() == record.GetMeal()) {
+//             return false;
+//           } 
+//     }
+//     leftover_records_.push_back(record); 
+//     return true;
+// }
+
 bool LeftoverTracker::AddRecord(const LeftoverRecord& record) { 
     for(LeftoverRecord x : leftover_records_) {
-      if (x.GetCost() == record.GetCost() &&
-          x.GetDate() == record.GetDate() &&
-          x.GetDisposalMechanism() == record.GetDisposalMechanism() &&
-          x.GetFoodName() == record.GetFoodName() &&
-          x.GetLeftOverReason() == record.GetLeftOverReason() &&
-          x.GetQuantityInOz() == record.GetQuantityInOz() &&
-          x.GetMeal() == record.GetMeal()) {
-            return false;
+      if (x.GetCost() != record.GetCost() ||
+          x.GetDate() != record.GetDate() ||
+          x.GetDisposalMechanism() != record.GetDisposalMechanism() ||
+          x.GetFoodName() != record.GetFoodName() ||
+          x.GetLeftOverReason() != record.GetLeftOverReason() ||
+          x.GetQuantityInOz() != record.GetQuantityInOz() ||
+          x.GetMeal() != record.GetMeal()) {
+                leftover_records_.push_back(record); 
+            return true;
           } 
+          }
+          return false;
     }
-    leftover_records_.push_back(record); 
-    return true;
-}
+
