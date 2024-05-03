@@ -198,6 +198,9 @@ std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() co
         }
         if  (reasons == "Tastes bad") {
             buy_less_food = true;
+        }
+        if (reasons == "Too much left overs") {
+            buy_less_food = true;
             cook_small = true;
         }
     }
@@ -208,7 +211,13 @@ std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() co
         vec_strat.push_back("Donate before expiration");
     }
     if (buy_less_food) {
+        vec_strat.push_back("Buy less food");
+    }
+    if(cook_small) {
         vec_strat.push_back("Cook small servings");
+    }
+    if (recycle) {
+        vec_strat.push_back("Recycle left overs");
     }
     if (vec_strat.empty()) {
         vec_strat.clear();
