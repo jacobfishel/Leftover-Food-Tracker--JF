@@ -138,42 +138,49 @@ crow::json::wvalue LeftoverRecordToCrowJSON(const LeftoverRecord &record) {
   // TODO 1. Use the accessor/getter function for date from the
   // LeftoverRecord class object to get the date and store it in the date
   // string declared above.
+  date = record.GetDate();
   record_json["date"] = date;
 
   std::string meal;
   // TODO 2. Use the accessor/getter function for meal from the
   // LeftoverRecord class object to get the meal and store it in the meal
   // string declared above.
+  meal = record.GetMeal();
   record_json["meal"] = meal;
 
   std::string food_name;
   // TODO 3. Use the accessor/getter function for food name from the
   // LeftoverRecord class object to get the food name and store it in the
   // food_name string declared above.
+  food_name = record.GetFoodName();
   record_json["food_name"] = food_name;
 
   double quantity;
   // TODO 4. Use the accessor/getter function for quantity from the
   // LeftoverRecord class object to get the quantity and store it in the
   // quantity variable declared above.
+  quantity = record.GetQuantityInOz();
   record_json["qty_in_oz"] = quantity;
 
   std::string leftover_reason;
   // TODO 5. Use the accessor/getter function for leftover reason from the
   // LeftoverRecord class object to get the leftover reason and store it in
   // the leftover_reason string declared above.
+  leftover_reason = record.GetLeftOverReason();
   record_json["leftover_reason"] = leftover_reason;
 
   std::string disposal_mechanism;
   // TODO 6. Use the accessor/getter function for disposal mechanism from the
   // LeftoverRecord class object to get the disposal mechanism and store it
   // in the disposal_mechanism string declared above.
+  disposal_mechanism = record.GetDisposalMechanism();
   record_json["disposal_mechanism"] = disposal_mechanism;
 
   double cost;
   // TODO 7. Use the accessor/getter function for cost from the
   // LeftoverRecord class object to get the cost and store it in the cost
   // variable declared above.
+  cost = record.GetCost();
   record_json["cost"] = cost;
     
   return record_json;
@@ -188,10 +195,7 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns all
   // the most common disposal mechanisms as a vector of strings. Store the
   // result in the vector declared above.
-
-
-  report_json["most_common_disposal_mechanism_"] =
-    most_common_disposal_mechanisms;
+  report_json["most_common_disposal_mechanism_"] = most_common_disposal_mechanisms;
 
   std::vector<std::string> most_common_leftovers{report.MostCommonLeftover()};
   // TODO: Call the member function of LeftoverReport class that returns all
@@ -215,8 +219,7 @@ crow::json::wvalue LeftoverReportToCrowJSON(const LeftoverReport &report) {
   // TODO: Call the member function of LeftoverReport class that returns all
   // the suggested strategies as a vector of strings. Store the result in the
   // vector declared above.
-  report_json["suggested_strategies_to_reduce_leftover_"] =
-    suggested_strategies_to_reduce_leftover;
+  report_json["suggested_strategies_to_reduce_leftover_"] = suggested_strategies_to_reduce_leftover;
 
   double total_cost_of_leftover = report.TotalCostOfLeftover();
   // TODO: Call the member function of LeftoverReport class that returns the

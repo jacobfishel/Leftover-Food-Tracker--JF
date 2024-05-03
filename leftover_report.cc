@@ -19,35 +19,37 @@
 // to tell the compiler that each function belongs to the LeftoverReport
 // class.
 // ===================================================================
+LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord> &leftover_records)
+  : leftover_records_(leftover_records), total_cost_of_leftovers_(0.0){
+    if (leftover_records.empty()) {
+        return;
+    }
+     }
+
 std::vector<std::string> LeftoverReport::MostCommonLeftover() const {
-    std::vector<std::string> one_string;
-    if(leftover_records_.empty()){
-        return{};
-    } else if(leftover_records_.size() == 1) {
-        one_string.push_back(leftover_records_[0].GetFoodName());
-        return one_string;
-    }
-    std::map<std::string, int> common_names;
-    for(const LeftoverRecord& record : leftover_records_) {
-        std::string name = record.GetFoodName();
-        common_names[name]++;
-    }
+    std::map<std::string, int> maps_common_leftover;
+    int max = 0;
     
-    double max = 0;
-    for (const auto &pair : common_names) {
-        if (pair.second > max) {
-            max = pair.second;
+    // Count frequencies and find maximum frequency
+    for (const LeftoverRecord& record : leftover_records_) {
+        const std::string& common_leftover = record.GetFoodName();
+        if (maps_common_leftover.count(common_leftover) == 0) {
+            maps_common_leftover[common_leftover] = 1;
+        } else {
+            maps_common_leftover[common_leftover]++;
+            max = std::max(max, maps_common_leftover[common_leftover]);
         }
     }
 
-    std::vector<std::string> most_common_item;
-    for(const auto &pair : common_names) {
-        if(pair.second == max) {
-            most_common_item.push_back(pair.first);
+    // Find food items with maximum frequency
+    std::vector<std::string> max_food;
+    for (const auto& it : maps_common_leftover) {
+        if (it.second == max) {
+            max_food.push_back(it.first);
         }
     }
     
-    return most_common_item;
+    return max_food;
 }
 
 std::vector<std::string> LeftoverReport::MostCostlyLeftoverProducingMeals() const {
@@ -134,24 +136,23 @@ std::vector<std::string> LeftoverReport::MostCommonDisposalMechanisms() const {
 
 std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() const {
     std::vector<std::string> suggested_strategies;
+    bool has_expired = false;
+
     for (const LeftoverRecord &record : leftover_records_) {
         if (record.GetLeftOverReason() == "Expired") {
+            has_expired = true;
             suggested_strategies.push_back("Donate before expiration");
         } else if (record.GetLeftOverReason() == "Tastes bad") {
             suggested_strategies.push_back("Buy less food");
-        } else if (record.GetLeftOverReason() == "Too much left overs") {
+        } else if (record.GetLeftOverReason() == "Too much leftovers") {
             suggested_strategies.push_back("Buy less food");
-            suggested_strategies.push_back("Cook small servings");
+            suggested_strategies.push_back("Cook smaller servings");
         }
     }
-        bool check = true;
-        for(int i = 0; i < suggested_strategies.size(); i++) {
-            if (suggested_strategies.at(i) == "Expired") {
-                check = false;
-            }
-            if (check == true) {
-                suggested_strategies.push_back("Recycle left overs");
-                }
-        }
-        return suggested_strategies;
+
+    if (!has_expired) {
+        suggested_strategies.push_back("Recycle leftovers");
     }
+
+    return suggested_strategies;
+}
