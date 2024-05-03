@@ -357,6 +357,7 @@ crow::json::wvalue LeftoverTrackerBackend::DeleteRecord(
   // member object that you added in leftovere_tracker.h, that deletes
   // `record` and returns the status of the delete operation as a bool. Store
   // the returned value in the bool declared above.
+  delete_result = leftover_tracker_object_.DeleteRecord(record);
   status["success"] = delete_result;
     
   return status;
