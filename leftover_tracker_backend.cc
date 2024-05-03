@@ -387,3 +387,5 @@ crow::json::wvalue LeftoverTrackerBackend::GetLeftoverReport() const {
   // Store the returned value in the `generated_report` object declared above.
   return LeftoverReportToCrowJSON(generated_report);
 }
+
+
