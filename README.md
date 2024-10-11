@@ -2,6 +2,6 @@
 
 Welcome to the Leftover Food Tracker project! 
 
-This project is intended to give you the opportunity to practice the concepts that your learned in CPSC 121.
+This project is intended to practice my c++ object oriented programming
 
-See the [Project Guide](http://tiny.cc/CPSC121A-ProjectGuide) for detailed instructions.
+To run, start a port with address 18080. As long as you have all the libraries installed, it will run.

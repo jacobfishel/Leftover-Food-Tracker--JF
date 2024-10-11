@@ -2,24 +2,16 @@
 #define LEFTOVER_REPORT_H_
 
 // Jacob Fishel
-// CPSC 121L-11
 // 1/30/2024
-// jacobfishel@csu.fullerton.edu
+// jacobtfishel@gmail.com
 // jacobfishel
+
 #include "leftover_record.h"
 #include <vector>
 #include <unordered_map>
 
 class LeftoverReport {
-    // ======================= YOUR CODE HERE =======================
-     // Write the LeftoverReport class here. Refer to your class design for the
-     // member variables, constructors, and member functions needed.
-     //
-     // Note: mark functions that do not modify the member variables
-     // as const, by writing `const` after the parameter list.
-     // Pass objects by const reference when appropriate.
-     // Remember that std::string is an object!
-     // ===============================================================
+
   public:
   LeftoverReport(const std::vector<LeftoverRecord> &leftover_records);
 

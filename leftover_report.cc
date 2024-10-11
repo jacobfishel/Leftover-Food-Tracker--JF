@@ -1,24 +1,12 @@
-// // Jacob Fishel
-// // CPSC 121L-11
-// // 1/30/2024
-// // jacobfishel@csu.fullerton.edu
-// // jacobfishel
+// Jacob Fishel
+// 1/30/2024
+// jacobtfishel@gmail.com
+// jacobfishel
 
 #include "leftover_report.h"
 #include <map>
 #include <vector>
-// // ========================= YOUR CODE HERE =========================
-// // This implementation file is where you should implement
-// // the member functions declared in the header (leftover_report.h), only
-// if you didn't implement them inline within leftover_report.h.
-//
-// Remember to specify the name of the class with :: in this format:
-//     <return type> MyClassName::MyFunction() {
-//        ...
-//     }
-// to tell the compiler that each function belongs to the LeftoverReport
-// class.
-// ===================================================================
+
 LeftoverReport::LeftoverReport(const std::vector<LeftoverRecord> &leftover_records)
   : leftover_records_(leftover_records), total_cost_of_leftovers_(0.0) {
     if (leftover_records.empty()) {
@@ -139,50 +127,6 @@ std::vector<std::string> LeftoverReport::MostCommonDisposalMechanisms() const {
     return most_common_disposal_mechanisms;
 }
 
-// std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() const {
-// //loop over the leftover_records_ vector and run mostcommonleftover function
-// std::vector<std::string> leftover_reasons = MostCommonLeftoverReasons();
-// if (leftover_reasons.empty()) {
-//         // Return a default strategy when no leftover reasons are available
-//         return{""};
-//     }
-// bool expired = false;
-// bool tastes_bad = false;
-// bool too_much_leftovers = false;
-
-// for(const std::string& reason : leftover_reasons) {
-//     if (reason == "Expired") {
-//         expired = true;
-//     } else if (reason == "Tastes bad") {
-//         tastes_bad = true;
-//     } else if (reason == "Too much left overs") {
-//         too_much_leftovers = true;
-//     } 
-// }
-// std::vector<std::string> leftover_strategy;
-// if (expired) {
-//     leftover_strategy.push_back("Donate before expiration");
-// } else {
-//     leftover_strategy.push_back("Recycle left overs");
-// }
-// if (tastes_bad || too_much_leftovers) {
-//     bool buy_less_food_present = false;
-//  for (const std::string& strategy : leftover_strategy) {
-//             if (strategy == "Buy less food") {
-//                 buy_less_food_present = true;
-//                 break;
-//             }
-//         }
-//         if (!buy_less_food_present) {
-//             leftover_strategy.push_back("Buy less food");
-//         }
-//     }
-// if (too_much_leftovers) {
-//     leftover_strategy.push_back("Cook small servings");
-// }
-
-// return leftover_strategy;
-// }
 
 std::vector<std::string> LeftoverReport::SuggestLeftoverReductionStrategies() const {
     std::vector<std::string> vec_strat;

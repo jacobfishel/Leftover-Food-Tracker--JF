@@ -4,7 +4,6 @@
 #include "server_utils/crow_all.h"
 #include "server_utils/sessions.h"
 
-// NOTE:  You don't need to modify anything in this file.
 
 int main() {
   std::string kFilename = "data/leftover_records.json";
